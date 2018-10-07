@@ -1,5 +1,5 @@
 /**
- * Created by Ahmed on 10/27/2016.
+ * Created by Ahmad Rahman on 10/27/2016.
  */
 "use strict";
 var path      = require("path");
