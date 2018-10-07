@@ -1,0 +1,14 @@
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\bin\x64\Debug\RTEvents.exe.config
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\obj\x64\Debug\Interop.zkemkeeper.dll
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\obj\x64\Debug\AxInterop.zkemkeeper.dll
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\obj\x64\Debug\RTEvents.csproj.ResolveComReference.cache
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\bin\x64\Debug\RTEvents.exe
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\bin\x64\Debug\RTEvents.pdb
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\bin\x64\Debug\MySql.Data.dll
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\bin\x64\Debug\Interop.zkemkeeper.dll
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\bin\x64\Debug\AxInterop.zkemkeeper.dll
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\obj\x64\Debug\RTEvents.RTEventsMain.resources
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\obj\x64\Debug\RTEvents.Properties.Resources.resources
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\obj\x64\Debug\RTEvents.csproj.GenerateResource.Cache
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\obj\x64\Debug\RTEvents.exe
+\\VALLEY-PC\Mydownloads\rizwan\HRMS2016\RTEvents-\obj\x64\Debug\RTEvents.pdb
