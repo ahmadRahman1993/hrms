@@ -1,5 +1,5 @@
 /**
- * Created by Muhammad Annis on 8/26/2016.
+ * Created by Ahmad Rahman on 8/26/2016.
  */
 // route middleware to verify a token
 // var express = require('express');
