@@ -1,0 +1,135 @@
+<div class="" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+     xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+        <div class="container" style="padding-top: 0px;">
+            <h1 class="page-header">Employee Profile</h1>
+            <div class="row">
+                <div class="col-md-12 col-sm-4 col-xs-12 animated fadeInDown">
+                    <div class="well profile_view">
+                        <% if(success){ %>
+                        <div class="alert alert-success" role="alert">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            User Profile Updated Successfully
+                        </div>
+                        <% } %>
+                        <div class="col-sm-12 margin-top-50">
+                            <div class=" left col-md-5 col-sm-6 col-xs-12">
+                                <div class="text-center admin-profile">
+                                    <img src="/images/users/<%= otherUserData.image %>"
+                                         class="avatar circle-dimension img-circle img-thumbnail" alt="avatar">
+                                </div>
+                                </br>
+                                <% if ((otherUserData.login_id == userData.login_id) || (role_data.role_type == "ADMIN")){
+                                %>
+                                <div class="text-center admin-profile">
+                                    <a href="/users/userProfile/<%= otherUserData.login_id %>"
+                                       class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+                                </div>
+                                <% } %>
+
+                                </br>
+                                </br>
+
+                                <% if ((otherUserData.login_id == userData.login_id) || (role_data.role_type == "ADMIN")){
+                                %>
+                                <div class="text-center admin-profile">
+                                    <a href="/document/documentsMain/<%= otherUserData.id %>"
+                                       class="btn btn-success"><i class="fa fa-book" aria-hidden="true"></i>  Documents</a>
+                                </div>
+                                <% } %>
+
+                            </div>
+
+                            <div class="right col-xs-7">
+                                <h4 class="brief"><b>Personal Information</b></h4>
+
+                                <ul class="list-unstyled">
+                                    <li><strong>First Name : </strong><%= otherUserData.first_name %></li>
+                                    <li><strong>Last Name: </strong><%= otherUserData.last_name %></li>
+                                    <li><strong>Gender: </strong><%= otherUserData.gender %></li>
+                                </ul>
+                                </br>
+                                <h4 class="brief"><b>Contact Information</b></h4>
+
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-phone"></i> <strong>Mobile
+                                            #: </strong><%= otherUserData.contact_no %></li>
+                                    <li><i class="fa fa-phone-square"></i> <strong>Emergency Contact
+                                            #: </strong><%= otherUserData.e_contact_no %></li>
+                                    <li><i class="fa fa-envelope"></i> <strong>Email : </strong><a
+                                                href="mailto:<%= otherUserData.email %>"><%= otherUserData.email %></a>
+                                    </li>
+                                    <li><i class="fa fa-envelope-square"></i> <strong>Alternate
+                                            Email: </strong><%= otherUserData.e_email %>
+                                    </li>
+                                    <li><i class="fa fa-home"></i> <strong>Address
+                                            : </strong><%= otherUserData.address %></li>
+
+                                </ul>
+                                </br>
+                                <h4 class="brief"><b>Company Information</b></h4>
+
+                                <ul class="list-unstyled">
+                                    <li><i></i><strong>Manager: </strong>
+                                        <%
+                                        if (otherUserData.manager != ""){
+                                        for(var i = 0; i < userList.length; i++) { %>
+                                        <% if (otherUserData.manager == userList[i].login_id){
+                                        %>
+                                        <a type="text"
+                                           href="/users/viewUserProfile/<%= otherUserData.manager %>"><%= userList[i].first_name %> <%= userList[i].last_name %></a>
+                                        <%
+                                        } %>
+                                        <% } %><!--<a type="text" href="/users/viewUserProfile/<%= otherUserData.manager %>">
+                                                 View Profile
+                                             </a>-->
+                                        <%
+                                        } else {
+                                        %>
+                                        None
+                                        <%
+                                        } %>
+                                    </li>
+                                    <li><i></i><strong>Designation: </strong><%= otherUserData.designation %></li>
+
+                                    <!--<li><i></i> <strong>Company: </strong><%= otherUserData.company.comp_name %></li>-->
+                                    <li><i></i> <strong>Joining
+                                            Date: </strong><%= otherUserData.joining_date.toString().substr(0, 16) %>
+                                    </li>
+
+
+                                </ul>
+                                </br>
+
+                                <h4 class="brief"><b>Account Information</b></h4>
+
+                                <ul class="list-unstyled">
+
+                                    <li><i></i><strong>Login ID: </strong><%= otherUserData.login_id %></li>
+
+                                    <% if (otherUserData.role_id == 1) { %>
+                                    <li><i></i> <strong>Role: </strong>Admin</li>
+                                    <% } else if (otherUserData.role_id == 2) { %>
+                                    <li><i></i> <strong>Role: </strong>User</li>
+                                    <% } else if (otherUserData.role_id == 3){ %>
+                                    <li><i></i> <strong>Role: </strong>Super Admin</li>
+                                    <% } %>
+
+                                    <% if (otherUserData.is_active == 1) { %>
+                                    <li><i></i> <strong>Account Status: </strong>Active</li>
+                                    <% } else if (otherUserData.is_active == 0) { %>
+                                    <li><i></i> <strong>Account Status: </strong>In-Active</li>
+                                    <% } %>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

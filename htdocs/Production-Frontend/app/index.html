@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<!-- define angular app -->
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/components-font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/animate.min.css">
+    <link rel="stylesheet" href="static/css/custom.css">
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="static/css/green.css">
+    <link rel="stylesheet" href="static/css/fullcalendar.css">
+    <link rel="stylesheet" href="static/css/fullcalendar.print.css">
+
+</head>
+
+<body >
+<header>
+    <a href="#!/" class="header-btn">
+        <img src="static/images/menu.svg">
+    </a>
+</header>
+<!--<div class="top_nav">-->
+<!--<div class="nav_menu">-->
+<!--<nav class="" role="navigation">-->
+<!--<div class="nav toggle"> <a href="#!/" id="menu_toggle"><i class="fa fa-bars"></i></a> </div>-->
+<!--<ul class="nav navbar-nav navbar-right">-->
+<!--<li>-->
+<!--<a href="#!/login" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">LogOut</span> </a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</nav>-->
+<!--</div>-->
+<!--</div>-->
+<div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash"
+     ng-bind="flash.message"></div>
+<div ng-view></div>
+<a ng if="" href="#!/login" class="header-btn">
+    <img src="static/images/menu.svg">
+</a>
+</body>
+
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular-route/angular-route.min.js"></script>
+<script src="lib/angular-cookies/angular-cookies.js"></script>
+<script src="lib/checklist-model/checklist-model.js"></script>
+<script src="static/js/ng-file-upload-all.js"></script>
+<script src="static/js/angular-file-saver.bundle.min.js"></script>
+<script src="static/js/icheck.min.js"></script>
+<script src="static/js/bootstrap-progressbar.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="static/js/jquery.nicescroll.min.js"></script>
+<script src="static/js/custom.js"></script>
+<script src="static/js/moment.min.js"></script>
+<script src="static/js/fullcalendar.min.js"></script>
+<script src="static/js/calanderFooter.js"></script>
+<script src="lib/highcharts/highstock.js"></script>
+<script src="lib/highcharts/modules/exporting.js"></script>
+<script src="services/authentication.service.js"></script>
+<script src="services/flash.service.js"></script>
+<script src="controllers/appModule.js"></script>
+<script src="services/userGraphs.js"></script>
+<script src="controllers/angularRoutes.js"></script>
+<script src="controllers/mainController.js"></script>
+</html>

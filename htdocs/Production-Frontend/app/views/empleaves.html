@@ -1,0 +1,372 @@
+<div class="right_col" role="main" style="min-height: 200px;" ng-init="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Leave Dictiontary</h3>
+        </div>
+    </div>
+    <table class="table table-striped" id="list_view" ng-init="getLeaveEmpDir()">
+        <thead>
+        <tr>
+            <!--<th style="width: 1%">#</th>-->
+            <th style="width: 20%">Name</th>
+            <th style="width: 20%">Userid</th>
+            <th>Leave Balance</th>
+            <th>Leave</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="user-directory-list" ng-repeat="emp in empleavedir">
+            <!--<td>1</td>-->
+            <td data-name-attr="{{emp.first_name}} {{emp.last_name}}" class="user-name">
+                {{emp.first_name}} {{emp.last_name}}
+                <br>
+            </td>
+            <td data-name-attr="{{emp.login_id}}" class="user-name">
+                {{emp.login_id}}
+                <br>
+            </td>
+            <td>
+                <a ng-click="openModalleaveUpdate(emp.id)" class="btn btn-primary btn-xs">
+                    <!--<i class="fa fa-user"> </i>-->
+                    Update Leave Balance
+                </a>
+            </td>
+            <td>
+                <a ng-click="openModalleave(emp.id)" class="btn btn-primary btn-xs">
+                    <!--<i class="fa fa-trash-o" aria-hidden="true"></i>-->
+                    Update Leaves
+                </a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <!-- Modal  myModalHorizontalUpdate -->
+    <div class="modal fade" id="myModalLeaveBalUpdate" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header myModalHorizontalUpdate -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Update Leave Type</h4>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                    <form class="form-horizontal" ng-submit="updateLeaveChange()" role="form">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Leave Type :</label>
+                            <select class="col-md-5 col-sm-5 col-xs-12"
+                                    ng-change="onLeaveChange(employee.leaves_type.name)" name="repeatSelect"
+                                    id="repeatSelect" ng-model="employee.leaves_type.name">
+                                <option ng-repeat="option in leaveType" value="{{option.id}}">{{option.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Total Leaves :</label>
+                            <div class="col-sm-10">
+                                <input type="number" ng-model="employee.leavetype.sel.total_leave" class="form-control"
+                                       placeholder="Total leaves"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Availed Leaves :</label>
+                            <div class="col-sm-10">
+                                <input type="number" ng-model="employee.leavetype.sel.availed_leave"
+                                       class="form-control"
+                                       placeholder="Availed Leaves"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Remaining Leaves :</label>
+                            <div class="col-sm-10">
+                                <input type="number" ng-model="employee.leavetype.sel.available_leave"
+                                       class="form-control"
+                                       placeholder="Leave Status"/>
+                            </div>
+                        </div>
+                        <div class="form-group modal-footer">
+                            <div>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--for view/inserting leave dates modal-->
+
+
+    <div class="modal fade" id="myModalLeave" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel1" aria-hidden="true" >
+        <div class="modal-dialog" >
+            <div class="modal-content" style="!important; overflow: scroll;">
+                <!-- Modal Header myModalLeave -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel1">Manage Leaves</h4>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Leave Date</th>
+                            <th>Leave Deduction</th>
+                            <th>Comments</th>
+                            <th>Leave Type</th>
+                            <th> Edit</th>
+                            <th> Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="user-directory-list" ng-repeat="emp in Empleavedata">
+
+                            <td>
+                                {{emp.leave_date| date : "dd/MM/y"}}
+                                <br>
+                            </td>
+                            <td>
+                                {{emp.leave_deduction}}
+                                <br>
+                            </td>
+                            <td>
+                                {{emp.comments}}
+                                <br>
+                            </td>
+                            <td>
+                                {{emp.leaves_type.name}}
+                                <br>
+                            </td>
+                            <td>
+                                <a ng-click="ff(emp.id)" class="btn btn-primary btn-xs">
+                                    Edit
+                                </a>
+                            </td>
+                            <td>
+                                <a ng-click="ffdel(emp.leave_date)" class="btn btn-primary btn-xs">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" ng-click="AdduserLeavemodal()">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="userLeaveAddModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4 class="modal-title">Add User Leave</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Leave Date :</label>
+                                <div class="col-sm-10">
+                                    <input type="date" value="2016-11-16" ng-model="AddEmployeeLeaveData.leave_date" class="form-control"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Leave Type :</label>
+                                <div class="col-sm-10">
+                                    <select ng-model="AddEmployeeLeaveData.Type">
+                                        <option ng-repeat="option in leaveType" value="{{option.id}}">{{option.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Leave Deduction :</label>
+                                <div class="col-sm-10">
+                                    <input type="number" ng-model="AddEmployeeLeaveData.leave_deduction"
+                                           class="form-control"
+                                           placeholder="Enter Leave Deductions"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Leave Comments :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="AddEmployeeLeaveData.comments" class="form-control"
+                                           placeholder="Enter Leave Comments"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a ng-click="SaveAdduserLeavemodal()" class="btn btn-primary">Yes</a>
+                        <a class="btn btn-default" ng-click="AdduserLeavemodalClose()">No</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="userDelModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4 class="modal-title">Are you sure, you want to delete this entry ?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <a ng-click="delUserLeave()" class="btn btn-primary">Yes</a>
+                        <a class="btn btn-default" ng-click="closedelUserLeave()">No</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModalLeaves" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel12" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header myModalLeave -->
+                    <div class="modal-header">
+                        <button type="button" ng-click="HidemyModalLeaves()" class="close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel12">Edit Leaves</h4>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <form class="form-horizontal" ng-submit="FuncUpdateEmployeeLeaveData()" role="form">
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Leave Date :</label>
+                                <div class="col-sm-10">
+                                    <input type="datetime" ng-model="UpdateEmployeeLeaveData.leave_date"
+                                           class="form-control"
+                                           placeholder="Enter Leave Date"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Leave Type :</label>
+                                <div class="col-sm-10">
+                                    <select ng-model="UpdateEmployeeLeaveData.name">
+                                        <option ng-repeat="option in leaveType" value="{{option.name}}">{{option.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Leave Deduction :</label>
+                                <div class="col-sm-10">
+                                    <input type="number" ng-model="UpdateEmployeeLeaveData.leave_deduction"
+                                           class="form-control"
+                                           placeholder="Enter Leave Deductions"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Leave Comments :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="UpdateEmployeeLeaveData.comments" class="form-control"
+                                           placeholder="Enter Leave Comments"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group modal-footer">
+                                <div>
+                                    <button ng-click="HidemyModalLeaves()" class="btn btn-default">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $('#list_btn').click(function () {
+        $('#grid_view').hide();
+        $('#list_view').show();
+    });
+
+    $('#grid_btn').click(function () {
+        $('#list_view').hide();
+        $('#grid_view').show();
+    });
+</script>
+
+<script>
+    (function () {
+        $('#search-box').keyup(function () {
+            var value = $(this).val();
+            var exp = new RegExp(value, 'i');
+            $('.user-directory-list').each(function () {
+                console.log("select : ", $('#search-by').val())
+                if ($('#search-by').val() === "designation") {
+                    var isMatch = exp.test($('.user-designation', this).text());
+                    $(this).toggle(isMatch);
+                } else {
+                    var isMatch = exp.test($('.user-name', this).text());
+                    $(this).toggle(isMatch);
+                }
+
+            });
+        });
+    })();
+</script>
+
+<script>
+    (function () {
+        $('#alphabet-list').on('click', 'button', function (evt) {
+            evt.preventDefault();
+
+// Grab the letter that was clicked
+            var sCurrentLetter = $(this).text();
+            /*.toLowerCase()*/
+            console.log('letter clicked', sCurrentLetter, '      ', $(this).text());
+
+            if ($('#list_view').is(':visible')) {
+
+                $('td.user-name').parent().show();
+                if (sCurrentLetter == 'All') {
+                    $('#grid_view').hide();
+                } else
+                    $('td.user-name:not( [data-name-attr^="' + sCurrentLetter + '"] )').parent().hide();
+            } else {
+// Now hide all rows that have IDs that do not start with this letter
+                $('.user-name').parent().parent().parent().show();
+//$('#grid_view').show();
+                if (sCurrentLetter == 'All') {
+                    $('#list_view').hide();
+                } else
+                    $('.user-name:not( [data-name-attr^="' + sCurrentLetter + '"] )').parent().parent().parent().hide();
+            }
+
+        });
+    })();
+</script>

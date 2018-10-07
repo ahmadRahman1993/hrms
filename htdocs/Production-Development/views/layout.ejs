@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./layout/head %>
+</head>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <% include ./layout/side_menu %>
+        <header>
+            <% include ./layout/header %>
+        </header>
+        <div class="right_col" role="main">
+            <main>
+                <%- body %>
+            </main>
+
+            <footer>
+                <% include ./layout/footer %>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

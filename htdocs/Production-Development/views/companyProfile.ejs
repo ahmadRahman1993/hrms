@@ -1,0 +1,96 @@
+<div class="">
+    <div class="row">
+
+        <div class="container" style="padding-top: 60px;">
+            <h1 class="page-header"><%= comp_data.comp_name %> Profile</h1>
+            <div class="row">
+                <!-- left column -->
+               <!-- <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="text-center admin-profile">
+                        <img src="/images/company_default.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                        <h6>Upload a different photo...</h6>
+                        <input type="file" class="text-center center-block well well-sm">
+                    </div>
+                </div>-->
+
+                <form class="form-horizontal col-md-4 col-sm-6 col-xs-12" role="form" method="post" action="/company/uploadLogo/<%= comp_data.id %>%>" enctype="multipart/form-data">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="text-center admin-profile">
+                            <img src="/images/company/<%= comp_data.logo %>" class="avatar img-circle img-thumbnail" alt="avatar">
+                            <h6>Upload a different photo...</h6>
+                            <input type="file" required="true" name="image" class="text-center center-block well well-sm">
+                            <input type="hidden" name="comp_name" value="<%= comp_data.comp_name %>">
+                            <input class="btn btn-primary" value="Upload" type="submit">
+                        </div>
+                    </div>
+                </form>
+
+                <!-- edit form column -->
+                <div class="col-md-7 col-sm-6 col-xs-12 personal-info">
+
+                    <h3>Company info</h3>
+                    <form id="add_comp" class="form-horizontal" role="form" method="post" action="/company/update/<%= comp_data.id %>">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Company Name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" name="comp_name" value="<%= comp_data.comp_name %>" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Web Url:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" name="web_url" value="<%= comp_data.web_url %>" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Company Logo Url:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" name="logo" value="<%= comp_data.logo %>" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Contact No:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" name="contact_no" value="<%= comp_data.contact_no %>" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Address:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" name="address" value="<%= comp_data.address %>" type="text">
+                            </div>
+                        </div>
+
+                        <% if(role_data.role_type == 'SUPER ADMIN'){ %>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Active State:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" name="is_active" value="<%= comp_data.is_active %>" type="text">
+                            </div>
+                        </div>
+                        <% } %>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Admin Email:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" name="contact_email" value="<%= comp_data.contact_email %>" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-8">
+                                <input class="btn btn-primary" value="Update" type="submit">
+                                <span></span>
+                                <a class="btn btn-default" href="/company/viewCompanyProfile"> Cancel </a>
+                                <!--<input class="btn btn-default" value="Reset" type="reset">-->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

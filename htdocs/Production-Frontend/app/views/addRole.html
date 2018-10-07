@@ -1,0 +1,36 @@
+<div class="row" ng-init="getAllPrivs()">
+    <div class="col-xs-12 col-sm-6">
+        <h3>Assign Privileges to Role</h3>
+        <div class="input-group">
+            <span class="input-group-addon">Enter Role: </span>
+            <input type="text" ng-model="role.name" class="form-control" placeholder="Role">
+        </div>
+        <div class="well"><label ng-repeat="priv in privArray" style="display: block">
+            <input type="checkbox" checklist-model="role.roles" checklist-value="priv.id"> {{priv.name}}
+        </label></div>
+        <button ng-click="checkAll()" style="margin-right: 10px">Check all</button>
+        <button ng-click="uncheckAll()" style="margin-right: 10px">Uncheck all</button>
+        <button ng-click="setRole()">Done</button>
+    </div>
+    <!--<div class="col-xs-12 col-sm-6">
+        <h3>user.roles</h3>
+        <pre>{{role.roles|json}}</pre>
+    </div>-->
+
+
+    <div class="col-xs-12 col-sm-6">
+        <h3>Edit Priviles For Role</h3>
+
+        <select class="form-control input-group" ng-model="role.role_id" ng-change="getPrivsByRoleId()">
+            <option  ng-repeat="role in rolesList" value="{{role.id}}">{{role.name}}</option>
+        </select>
+
+        <div class="well"><label ng-repeat="priv in privArray" style="display: block">
+            <input type="checkbox" checklist-model="role.roles" checklist-value="priv.id"> {{priv.name}}
+        </label></div>
+        <button ng-click="checkAll()" style="margin-right: 10px">Check all</button>
+        <button ng-click="uncheckAll()" style="margin-right: 10px">Uncheck all</button>
+        <button ng-click="updateRole()">Update</button>
+    </div>
+
+</div>

@@ -1,0 +1,17 @@
+{
+  "side_menu": [
+    {"title":"Home", "icon":"fa fa-home", "page":"/adminMain"},
+    {"title":"Company Info", "icon":"fa fa-bank", "page":"/company/viewCompanyProfile"},
+    {"title":"Users Info", "icon":"fa fa-male", "page":"/users/adminPageUsersList"},
+    {"title":"My Profile", "icon":"fa fa-bank", "page":"/users/viewUserProfile"},
+    {"title":"Events", "icon":"fa fa-calendar", "page":"#"},
+    {"title":"Employee Directory", "icon":"fa fa-users", "page":"/users/usersDirectoryPage"}
+  ],
+  "summary_tabs": [
+    {"title":"Total Users", "icon":"fa fa-user"},
+    {"title":"Attendance", "icon":"fa fa-users"},
+    {"title":"Department", "icon":"fa fa-bank"},
+    {"title":"Pending Requests", "icon":"fa fa-bell"},
+    {"title":"Teams", "icon":"fa fa-users"}
+  ]
+}

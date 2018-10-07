@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HRMS Login Form</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css"/>
+    <link rel="stylesheet" href="stylesheets/style.css">
+
+</head>
+
+<body>
+
+<div class="wrapper">
+    <form class="form-signin" name="userForm" method="post" action="/login">
+        <h2 class="form-signin-heading">Blue Zorro HRMS</h2>
+        <h5 class="form-signin-heading">Please login</h5>
+
+        <% if(!success){ %>
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <%= message %>
+        </div>
+        <% } %>
+
+        <label for="login_id"> Login ID </label>
+        <input type="text" class="form-control" name="login_id" placeholder="Login ID" required="true" autofocus=""/>
+        <label for="password"> Password </label>
+        <input type="password" class="form-control" name="password" placeholder="Password" required="true"/>
+        <label for="checkbox">Remember me</label>
+        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    </form>
+</div>
+
+</body>
+</html>

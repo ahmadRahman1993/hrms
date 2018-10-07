@@ -1,0 +1,98 @@
+<div class="">
+    <div class="row">
+
+        <div class="container" style="padding-top: 0px;">
+            <h1 class="page-header">My Documents</h1>
+            <div class="row">
+
+                <div class="col-md-12 col-sm-4 col-xs-12 animated fadeInDown">
+                    <div class="well profile_view">
+
+                        <div>
+                        <% if (role_data.role_type != "ADMIN"){
+                        %>
+                        <form class="pull-right form-horizontal" role="form" method="post"
+                              action="/document/uploadDoc" enctype="multipart/form-data">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="text-center">
+                                    <input type="file" required="true" name="document"
+                                           class="text-center center-block well well-sm inline-block">
+                                    <input class="btn btn-primary" value="Upload" type="submit">
+                                </div>
+                            </div>
+
+                        </form>
+                        <% } %>
+                        </div>
+
+                        <div >
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Document Name</th>
+                                    <th>Download</th>
+                                    <th>Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <% for(var i = 0; i < doc_list.length; i++) { %>
+                                <tr>
+                                    <th scope="row"><%= i + 1 %></th>
+                                    <td><%= doc_list[i].file_name %>
+                                        %>
+                                    </td>
+                                    <td>
+                                        <a href="/document/downloadFile/<%= doc_list[i].doc_name %>">
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a onclick="openModal('<%= other_user_id.toString() %>/<%= doc_list[i].doc_name %>')">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% } %>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    function openModal(del_link) {
+        $('.modal').modal('show');
+        $('#del-doc').attr('href', '/document/delete/' + del_link);
+    }
+
+</script>
+
+<div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4 class="modal-title">Are you sure, you want to delete the document ?</h4>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">No</button>-->
+                <a id="del-doc" class="btn btn-primary">Yes</a>
+                <a class="btn btn-default" data-dismiss="modal">No</a>
+            </div>
+        </div>
+    </div>
+</div>

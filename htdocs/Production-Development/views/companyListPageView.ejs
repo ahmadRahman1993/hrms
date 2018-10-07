@@ -1,0 +1,65 @@
+<div class="">
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Registered Companies<small>subtitle</small></h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Company Name</th>
+                        <th>Reg Date</th>
+                        <th>Web Url</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>Contact Email</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <% for(var i=0; i < complist.length; i++) { %>
+
+                    <tr>
+                        <th scope="row"><%= complist[i].id %></th>
+                        <td><%= complist[i].comp_name %></td>
+                        <td><%= complist[i].reg_date %></td>
+                        <td><%= complist[i].web_url %></td>
+                        <td><%= complist[i].contact_no %></td>
+                        <td><%= complist[i].address %></td>
+                        <td><%= complist[i].contact_email %></td>
+                        <td><%= complist[i].is_active %></td>
+                        <td>
+                            <a href="#">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+
+                    <% } %>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div align="right">
+                <a href="/company/addNewCompanyView">
+                    <i class="fa fa-plus"></i>  Add Company
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</div>

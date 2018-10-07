@@ -1,0 +1,183 @@
+{
+  "menus": [
+    {
+      "menuid": 1,
+      "title": "Dashboard",
+      "url": "#!/dashboard",
+      "image": "static/images/dashboard.png",
+      "subMenus": [
+        {
+          "SubMenuid": 1,
+          "title": "Employee Directory",
+          "url": "#!/empdir",
+          "menuid": 2,
+          "image": "static/images/empdir.png"
+        },
+        {
+          "SubMenuid": 2,
+          "title": "Information",
+          "url": "",
+          "menuid": 2,
+          "image": "static/images/menu-logo.png"
+        },
+        {
+          "SubMenuid": 3,
+          "title": "Todo List",
+          "url": "#!/todo",
+          "menuid": 2,
+          "image": "static/images/todo-list.png"
+        }
+      ]
+    },
+    {
+      "menuid": 2,
+      "title": "Company",
+      "url": "",
+      "image": "static/images/company.png",
+      "subMenus": [
+        {
+          "SubMenuid": 1,
+          "title": "Employee Directory",
+          "url": "#!/empdir",
+          "menuid": 2,
+          "image": "static/images/empdir.png"
+        },
+        {
+          "SubMenuid": 2,
+          "title": "Information",
+          "url": "#!/company",
+          "menuid": 2,
+          "image": "static/images/menu-logo.png"
+        },
+        {
+          "SubMenuid": 3,
+          "title": "Todo List",
+          "url":  "#!/todo",
+          "menuid": 2,
+          "image": "static/images/todo-list.png"
+        }
+      ]
+    },
+    {
+      "menuid": 3,
+      "title": "Profile",
+      "url": "",
+      "image": "static/images/profile.ico",
+      "subMenus": [
+        {
+          "SubMenuid": 1,
+          "title": "View",
+          "url": "#!/profile",
+          "menuid": 3,
+          "image": "static/images/viewProfile.png"
+        },
+        {
+          "SubMenuid": 2,
+          "title": "Edit",
+          "url": "#!/editprofile",
+          "menuid": 3,
+          "image": "static/images/editProfile.png"
+        },
+        {
+          "SubMenuid": 3,
+          "title": "Documents",
+          "url": "",
+          "menuid": 3,
+          "url": "#!/documents",
+          "image": "static/images/profile.ico"
+        }
+      ]
+    },
+    {
+      "menuid": 4,
+      "title": "Directories",
+      "url": "",
+      "reqPriv":"ADD_EMP_ROLE",
+      "image": "static/images/menu-logo.png",
+      "subMenus": [
+        {
+          "SubMenuid": 1,
+          "title": "Companies Directory",
+          "url": "#!/compdir",
+          "menuid": 4,
+          "image": "static/images/menu-logo.png"
+        },
+        {
+          "SubMenuid": 2,
+          "title": "Employee Directory",
+          "url": "#!/empdir",
+          "menuid": 4,
+          "image": "static/images/empdir.png"
+        },
+        {
+          "SubMenuid": 3,
+          "title": "Add User",
+          "url": "#!/addNewUser",
+          "menuid": 4,
+          "image": "static/images/menu-logo.png"
+        }
+      ]
+    },
+    {
+      "menuid": 5,
+      "title": "Leave Management",
+      "url": "",
+      "reqPriv":"ADD_EMP_ROLE",
+      "image": "static/images/leave_management.png",
+      "subMenus": [
+        {
+          "SubMenuid": 1,
+          "title": "Manage Leaves",
+          "url": "#!/empleaves",
+          "menuid": 5,
+          "image": "static/images/leave_balance.png"
+        }
+      ,
+        {
+          "SubMenuid": 2,
+          "title": "SubMenuid53",
+          "url": "",
+          "menuid": 5,
+          "image": "static/images/menu-logo.png"
+        },
+        {
+          "SubMenuid": 3,
+          "title": "Leaves Types",
+          "url": "#!/leavestatus",
+          "menuid": 5,
+          "image": "static/images/leave_type.png"
+        }
+      ]
+    },
+    {
+      "menuid": 6,
+      "title": "Role Management",
+      "url": "",
+      "reqPriv":"ADD_EMP_ROLE",
+      "image": "static/images/manage_roles_icon.png",
+      "subMenus": [
+        {
+          "SubMenuid": 1,
+          "title": "Add Role",
+          "url": "#!/addRole",
+          "menuid": 6,
+          "image": "static/images/add_role_icon.ico"
+        },
+        {
+          "SubMenuid": 2,
+          "title": "Edit Role",
+          "url": "",
+          "menuid": 6,
+          "image": "static/images/edit_role_icon.png"
+        },
+        {
+          "SubMenuid": 3,
+          "title": "Assign Role",
+          "url": "#!/assignRole",
+          "menuid": 6,
+          "image": "static/images/assign_role_icon.png"
+        }
+      ]
+    }
+  ]
+}

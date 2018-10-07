@@ -1,0 +1,562 @@
+<!-- top tiles -->
+<div class="row tile_count">
+
+    <% page_data.summary_tabs.forEach(function(menu_item) { %>
+    <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+        <div class="left"></div>
+        <div class="right">
+            <span class="count_top"><i class='<%= menu_item.icon %>' ></i> <%= menu_item.title %></span>
+            <div class="count"><%= menu_item.value %></div>
+            <span class="count_bottom"><i class="green">Summary</i></span>
+        </div>
+    </div>
+    <% }); %>
+
+</div>
+<!-- /top tiles -->
+
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+            <div class="x_content">
+
+                <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+
+                    <div class="profile_img">
+
+                        <!-- end of image cropping -->
+                        <div id="crop-avatar">
+                            <!-- Current avatar -->
+                            <div class="avatar-view" title="Change the avatar">
+                                <img src="images/users/<%= userData.image %>" alt="Avatar">
+                            </div>
+
+                        </div>
+
+                        <ul class="list-unstyled user_data">
+
+                            <li><h4> <%= userData.first_name %> <%= userData.last_name %></h4>
+                            </li>
+
+                            <li><i class="fa fa-map-marker user-profile-icon"></i> <%= userData.company.comp_name %>, Karachi, Pakistan
+                            </li>
+
+                            <li>
+                                <i class="fa fa-briefcase user-profile-icon"></i> <%= userData.designation %>
+                            </li>
+
+                           <!-- <li class="m-top-xs">
+                                <i class="fa fa-external-link user-profile-icon"></i>
+                                <a href="http://www.netpace.com/index.html" target="_blank">www.netpace.com</a>
+                            </li>-->
+                        </ul>
+
+                        <a href="/users/viewUserProfile" class="btn btn-success"><i class="m-right-xs"></i>View Full Profile</a>
+
+                        <!-- start skills -->
+                        <br />
+                        <br />
+                        <h4>Documents</h4>
+                        <a href="/document/documentsMain/<%= userData.id %>" class="btn btn-success">
+                            <i class="fa fa-book" aria-hidden="true"></i>  My Documents
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="profile_title">
+                        <div class="col-md-6">
+                            <h2>Calender
+                                <small>Monthly</small>
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div id='calendar'>
+
+                </div>
+
+            </div>
+        </div>
+
+        </div>
+
+
+    <script>
+        var user = '<%= userData.first_name %>';
+        console.log('user Role is:', user);
+    </script>
+
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Announcements<small>Last 30 days</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="dashboard-widget-content">
+
+                    <ul class="list-unstyled timeline widget">
+                        <li>
+                            <div class="block">
+                                <div class="block_content">
+                                    <h2 class="title">
+                                        <a>Muharam-ul-Haram Holidays</a>
+                                    </h2>
+                                    <div class="byline">
+                                        <span>2 hours ago</span> by <a>Salman Ahmed</a>
+                                    </div>
+                                    <p class="excerpt">Blue Zorro Pvt Ltd will remain closed on account of "Muharram-ul-Haram" on following dates: <br> <br>
+                                        October 12, 2016 <br>
+                                        October 13, 2016 <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="block">
+                                <div class="block_content">
+                                    <h2 class="title">
+                                        <a>Eid Ul Adha Holidays</a>
+                                    </h2>
+                                    <div class="byline">
+                                        <span>8 hours ago</span> by <a>Salman Ahmed</a>
+                                    </div>
+                                    <p class="excerpt">Blue Zorro Pvt Ltd will remain closed on account of "Eid-ul-Adha" on following dates: <br> <br>
+                                        September 12, 2016 <br>
+                                        September 13, 2016 <br>
+                                        September 13, 2016 <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="block">
+                                <div class="block_content">
+                                    <h2 class="title">
+                                        <a>Ramzan Schedule</a>
+                                    </h2>
+                                    <div class="byline">
+                                        <span>13 hours ago</span> by <a>Salman Ahmed</a>
+                                    </div>
+                                    <p class="excerpt">Office timing during ramzan will be from 8:00 A.M to 3:00 P.M
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="block">
+                                <div class="block_content">
+                                    <h2 class="title">
+                                        <a>Ramzan Schedule</a>
+                                    </h2>
+                                    <div class="byline">
+                                        <span>13 hours ago</span> by <a>Salman Ahmed</a>
+                                    </div>
+                                    <p class="excerpt">Office timing during ramzan will be from 8:00 A.M to 3:00 P.M
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Check-in Time
+                        <small>Monthly</small>
+                    </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Settings 1</a>
+                                </li>
+                                <li><a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="leaves_pie_chart" style="width: 100%; height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+
+    <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Leaves Status
+                        <small>Yearly</small>
+                    </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Settings 1</a>
+                                </li>
+                                <li><a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" style="width: 100%; height: 300px;">
+                    <br>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Leaves</th>
+                            <th>Total</th>
+                            <th>Availed</th>
+                            <th>Remaining</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Casual</td>
+                            <td>14</td>
+                            <td>1</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Sick</td>
+                            <td>7</td>
+                            <td>0</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Bonus</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td>4</td>
+                        </tr>
+                        </tbody>
+                    </table><br>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    <!-- Start in out chart -->
+    <div class="col-md-8 col-sm-8 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>User Check in/out <small>This Month</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="col-md-9 col-sm-9 col-xs-12" id="user_check_in_out" style="width: 100%; height: 280px;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End in out chart -->
+
+    <!-- Start User Performance chart -->
+    <!--<div class="col-md-8 col-sm-8 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>User Performance<small>This Month</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="col-md-9 col-sm-9 col-xs-12" id="user_leaves_chart" style="width: 100%; height: 280px;"></div>
+            </div>
+        </div>
+    </div>-->
+    <!-- End User Performance chart -->
+
+
+
+    <!-- Start to do list -->
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>To Do List <small>This Month</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <div class="">
+                    <ul class="to_do">
+                        <li>
+                            <p>
+                                <input type="checkbox" class="flat"> Schedule meeting with new client </p>
+                        </li>
+                        <li>
+                            <p>
+                                <input type="checkbox" class="flat"> Create email address for new intern</p>
+                        </li>
+                        <li>
+                            <p>
+                                <input type="checkbox" class="flat"> Have IT fix the network printer</p>
+                        </li>
+                        <li>
+                            <p>
+                                <input type="checkbox" class="flat"> Copy backups to offsite location</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End to do list -->
+
+
+
+    <!-- Assets start -->
+    <div class="col-md-8 col-sm-8 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Company Assets <small>click for details</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <!-- start accordion -->
+                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel">
+                        <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <h4 class="panel-title">Laptop</h4>
+                        </a>
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <p><strong>Lenovo V310 15ISK- 6th Gen Ci5 04GB DDR4 500GB</strong></p>
+                                <p><strong>Processor Type</strong> 	6th Generation Core i5-6200U (2 Cores, 4 Threads)</p>
+                                <p><strong>Processor Speed</strong> 	2.3 GHz Turbo Boost Up to 2.8 GHz (Skylake, 3 MB Cache)</p>
+                                <p><strong>Installed RAM</strong> 	04 GB</p>
+                                <p><strong>Type of memory</strong> 	DDR4</p>
+                                <p><strong>Hard drive size</strong> 	500 GB</p>
+                                <p><strong>Hard drive speed</strong>	5400 RPM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <h4 class="panel-title">Internet Connection</h4>
+                        </a>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                <p><strong>Zong 4G MBB Wifi</strong></p>
+                                Zong 4G MBB Wifi with 50GB data package,
+                                Rs, 2000/-
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <h4 class="panel-title">Camera</h4>
+                        </a>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="panel-body">
+                                <p><strong>Canon EOS 1200D 18 MP</strong></p>
+                                <p><strong>Color</strong> 	Black</p>
+                                <p><strong>USB</strong> 	Yes</p>
+                                <p><strong>Flash</strong> 	Yes</p>
+                                <p><strong>Battery</strong> 	1 x Proprietary NP-FM500H Lithium-ion rechargeable</p>
+                                <p><strong>Card Slot</strong> 	Yes</p>
+                                <p><strong>Effective Mega Pixel</strong> 	18.0 MP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of accordion -->
+
+
+            </div>
+        </div>
+    </div>
+    <!-- assets end -->
+
+    </div>
+
+</div>
+
+<!-- Start Calender modal -->
+<div id="CalenderModalNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">New Calender Entry</h4>
+            </div>
+            <div class="modal-body">
+                <div id="testmodal" style="padding: 5px 20px;">
+                    <form id="antoform" class="form-horizontal calender" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Title</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="title" name="title">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Description</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" style="height:55px;" id="descr" name="descr"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default antoclose" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary antosubmit">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel2">Edit Calender Entry</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="testmodal2" style="padding: 5px 20px;">
+                    <form id="antoform2" class="form-horizontal calender" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Title</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="title2" name="title2">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Description</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" style="height:55px;" id="descr2" name="descr"></textarea>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary antosubmit2">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fc_create" data-toggle="modal" data-target="#CalenderModalNew"></div>
+<div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
+
+<!-- End Calender modal -->

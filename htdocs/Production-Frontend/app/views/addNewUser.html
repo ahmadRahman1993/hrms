@@ -1,0 +1,64 @@
+<div class="">
+    <div class="row">
+
+        <div class="container" style="padding-top: 60px;">
+            <h1 class="page-header">Add New User</h1>
+            <div class="row">
+                <div class="col-md-7 col-sm-6 col-xs-12 personal-info">
+                    <form id="add_user" ng-submit="createUser(userBasicInfo.basic_information.company_id)" class="form-horizontal" >
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">First Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="new_user.first_name" class="form-control" placeholder="First Name"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Last Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="new_user.last_name" class="form-control" placeholder="Last Name"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">User ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="new_user.login_id" class="form-control" placeholder="User ID"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" ng-model="new_user.login_password" class="form-control" placeholder="Password"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Gender :</label>
+                            <div class="col-sm-10">
+                                <select class="col-md-5 col-sm-5 col-xs-12 form-control" ng-model="new_user.gender">
+                                    <option ng-repeat="option in ['Male','Female']">{{option}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Designation</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="new_user.designation" class="form-control" placeholder="Designation"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-8">
+                                <input class="btn btn-primary" value="Add User" type="submit">
+                                <span></span>
+                                <input class="btn btn-default" value="Reset" type="reset">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,18 @@
+{
+  "side_menu": [
+    {"title":"Home", "icon":"fa fa-home", "page":"/userMain"},
+    {"title":"My Profile", "icon":"fa fa-bank", "page":"/users/viewUserProfile"},
+    {"title":"Messages", "icon":"fa fa-envelope-o", "page":"#"},
+    {"title":"Leaves", "icon":"fa fa-calendar", "page":"/device/device"},
+    {"title":"Attendance", "icon":"fa fa-calendar", "page":"#"},
+    {"title":"Employee Directory", "icon":"fa fa-users", "page":"/users/usersDirectoryPage"}
+  ],
+  "summary_tabs": [
+    {"title":"Total Employees", "icon":"fa fa-user", "value":"5"},
+    {"title":"Leaves Available", "icon":"fa fa-calendar", "value":"15"},
+    {"title":"Events", "icon":"fa fa-envelope-o", "value":8},
+    {"title":"Assets In Use", "icon":"fa fa-wrench", "value":"3"},
+    {"title":"Department", "icon":"fa fa-bank", "value":"I.T"},
+    {"title":"Avg Working Hours", "icon":"fa fa-clock-o", "value":"7.5"}
+  ]
+}

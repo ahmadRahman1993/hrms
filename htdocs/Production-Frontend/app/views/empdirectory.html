@@ -1,0 +1,406 @@
+<div class="right_col" role="main" style="min-height: 200px;" ng-init="getEmpDir()">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Employee Directory</h3>
+        </div>
+        <div>
+            <div class="btn-group pull-right">
+                <a id="list_btn" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th-list"></span> List
+                </a>
+                <a id="grid_btn" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th"></span> Grid
+                </a>
+            </div>
+        </div>
+
+        <!--<div class="title_right">-->
+            <!--<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">-->
+                <!--<div class="input-group">-->
+                    <!--<input type="text" class="form-control" placeholder="Search for...">-->
+                    <!--<span class="input-group-btn">-->
+                            <!--<button class="btn btn-default" type="button">Go!</button>-->
+                        <!--</span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="title_right">
+            <!-- Button trigger modal -->
+            <button class="btn btn-primary btn-small" data-toggle="modal" data-target="#myModalHorizontal"  ng-hide="$parent.globals.currentUser.globaldata.privArray.indexOf('CREATE_EMP')==-1">Add User</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Add User</h4>
+                        </div>
+
+                        <!-- Modal Body -->
+                        <div ng-controller="addUserController" class="modal-body">
+
+                            <form class="form-horizontal" ng-submit="createUser(comp_id)" role="form">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">First Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model="new_user.first_name" class="form-control" placeholder="First Name"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Last Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model="new_user.last_name" class="form-control" placeholder="Last Name"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">User ID</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model="new_user.login_id" class="form-control" placeholder="User ID"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" ng-model="new_user.login_password" class="form-control" placeholder="Password"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Gender :</label>
+                                    <div class="col-sm-10">
+                                        <select class="col-md-5 col-sm-5 col-xs-12 form-control" ng-model="new_user.gender">
+                                            <option ng-repeat="option in ['Male','Female']">{{option}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--<div class="form-group">
+                                    <label class="col-sm-2 control-label">Gender :</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model="new_user.company_id" class="form-control" placeholder="Password"/>
+                                    </div>
+                                </div>-->
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Designation</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model="new_user.designation" class="form-control" placeholder="Designation"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group modal-footer">
+                                    <div>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                        <!-- Modal Footer -->
+                        <!--<div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" ng-click="createUser()" class="btn btn-primary">Save changes</button>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+
+
+            <!--<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">-->
+                <!--<div class="input-group">-->
+                    <!--<input type="text" class="form-control" placeholder="Search for...">-->
+                    <!--<span class="input-group-btn">-->
+                            <!--<button class="btn btn-default" type="button">Go!</button>-->
+                        <!--</span>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+
+                <div class="x_content">
+
+
+                    <div class="container">
+                        <div class="btn-toolbar">
+                            <div id="alphabet-list" class="btn-group btn-group-sm">
+                                <button class="btn btn-default">All</button>
+                                <button class="btn btn-default">A</button>
+                                <button class="btn btn-default">B</button>
+                                <button class="btn btn-default">C</button>
+                                <button class="btn btn-default">D</button>
+                                <button class="btn btn-default">E</button>
+                                <button class="btn btn-default">F</button>
+                                <button class="btn btn-default">G</button>
+                                <button class="btn btn-default">H</button>
+                                <button class="btn btn-default">I</button>
+                                <button class="btn btn-default">J</button>
+                                <button class="btn btn-default">K</button>
+                                <button class="btn btn-default">L</button>
+                                <button class="btn btn-default">M</button>
+                                <button class="btn btn-default">N</button>
+                                <button class="btn btn-default">O</button>
+                                <button class="btn btn-default">P</button>
+                                <button class="btn btn-default">Q</button>
+                                <button class="btn btn-default">R</button>
+                                <button class="btn btn-default">S</button>
+                                <button class="btn btn-default">T</button>
+                                <button class="btn btn-default">U</button>
+                                <button class="btn btn-default">V</button>
+                                <button class="btn btn-default">W</button>
+                                <button class="btn btn-default">X</button>
+                                <button class="btn btn-default">Y</button>
+                                <button class="btn btn-default">Z</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="title_right">
+
+                        <div class="col-md-4 col-sm-4 form-group pull-right top_search">
+
+                            <div class="input-group pull-right">
+
+                                <input id="search-box" type="text" class="form-control profile-search" placeholder="Search for...">
+                                <span class="input-group-btn width-auto">
+                            <!--<button class="btn btn-default" type="button">Go!</button>-->
+                            <select name="search-by" id="search-by" class="select2_single form-control">
+                                 <option value="name">By Name</option>
+                                 <option value="designation">By Designation</option>
+                            </select>
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="grid_view">
+                    <div class="clearfix">
+                        <!--</div>-->
+                        <div class="col-md-4 col-sm-4 col-xs-12 animated fadeInDown user-directory-list"
+                             ng-repeat="emp in empDir">
+                            <div class="well profile_view">
+                                <div class="col-sm-12 employee-dir-box">
+                                    <h2 data-name-attr="{{emp.first_name}} {{emp.last_name}}" class="user-name">
+                                        {{emp.first_name}} {{emp.last_name}}
+                                    </h2>
+                                    <div class="left col-xs-7">
+                                        <h2 class="brief user-designation"><i>{{emp.designation}}</i></h2>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-legal"></i> Reporting to :
+                                                <br> {{emp.manager}}
+
+                                            </li>
+
+                                            <li><i class="fa fa-envelope"></i> Email :
+                                                <br> <a href="mailto:{{emp.login_id}}@bluezorro.com">{{emp.login_id}}@bluezorro.com</a>
+                                            </li>
+                                            <!--
+                                                <li><i class="fa fa-home"></i> Address  : house abc, street xyz, model colony malir</li>
+        -->
+
+                                    </ul>
+                                </div>
+                                <div class="right col-xs-5 text-center">
+                                    <img src="static/images/mannis.png" alt="" class="img-circle img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 bottom text-right">
+                                <div class="col-xs-12 col-sm-6 emphasis">
+
+                                </div>
+                                <div class="col-xs-12 col-sm-6 emphasis">
+
+
+                                        <a type="button" href="#!/userProfileDir/{{emp.id}}"
+                                           class="btn btn-primary btn-xs">
+                                            <i class="fa fa-user"> </i> View Profile
+                                        </a>
+                                    </div>
+
+                                <div class="col-xs-6 col-sm-7 emphasis" ng-hide="$parent.globals.currentUser.globaldata.privArray.indexOf('DELETE_USER')==-1">
+                                    <a type="button" href="" ng-click="openModal(emp.id)"
+                                       class="btn btn-primary btn-xs">
+                                        <i class="fa fa-trash-o"> </i> Delete
+                                    </a>
+                                </div>
+                                </div>
+                            </div>
+                            </ng-repeatdiv>
+                        </div>
+                    </div>
+                                        <!-- <a href="/company/addNewCompanyView">
+                                                <i class="fa fa-plus"></i>  Add Company
+                                            </a>-->
+                                        <!--<a type="button" href="" ng-click="openModal(emp.id)"-->
+                                           <!--class="btn btn-primary btn-xs">-->
+                                            <!--<i class="fa fa-trash-o"> </i> Delete-->
+                                        <!--</a>-->
+
+                                        <!--<a type="button" href="#!/userProfileDir/{{emp.id}}"-->
+                                           <!--class="btn btn-primary btn-xs">-->
+                                            <!--<i class="fa fa-user"> </i> View Profile-->
+                                        <!--</a>-->
+                                        <!-- <button type="button" class="btn btn-primary btn-xs" onclick="window.location='/users/viewUserProfile';"> <i class="fa fa-user">
+                                                 </i> View Profile </button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <table class="table table-striped" id="list_view" style="display:none">
+                    <thead>
+                    <tr>
+                        <th style="width: 1%">#</th>
+                        <th style="width: 20%">Name</th>
+                        <th>Image</th>
+                        <th>Designation</th>
+                        <th>Reporting to</th>
+                        <th>Email</th>
+                        <th>View</th>
+                        <th ng-hide="$parent.globals.currentUser.globaldata.privArray.indexOf('DELETE_USER')==-1">Delete User</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+                <tr class="user-directory-list" ng-repeat="emp in empDir">
+                    <td>1</td>
+                    <td data-name-attr="{{emp.first_name}} {{emp.last_name}}" class="user-name">
+                        {{emp.first_name}} {{emp.last_name}}
+                        <br>
+                    </td>
+                    <td>
+                        <ul class="list-inline">
+                            <li>
+                                <img src="static/images/mannis.png" class="avatar" alt="Avatar">
+                            </li>
+                        </ul>
+                    </td>
+
+                    <td class="user-designation">
+                        {{emp.designation}}
+                    </td>
+
+                    <td>
+
+                        {{emp.manager}}
+
+                        </td>
+                                 <td>
+                            <a href="mailto:{{emp.login_id}}@bluezorro.com"> {{emp.login_id}}@bluezorro.com</a>
+                        </td>
+
+                        <td>
+                            <a href="#!/userProfileDir/{{emp.id}}" class="btn btn-primary btn-xs">
+                                <i class="fa fa-user"> </i> View Profile
+                            </a>
+                        </td>
+                        <td  ng-hide="$parent.globals.currentUser.globaldata.privArray.indexOf('DELETE_USER')==-1">
+                            <a ng-click="openModal(emp.id)">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+
+    <div id="userDelModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                    <h4 class="modal-title">Are you sure, you want to delete the User ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">No</button>-->
+                    <a ng-click="deleteUser()" class="btn btn-primary">Yes</a>
+                    <a class="btn btn-default" data-dismiss="modal">No</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        $('#list_btn').click(function () {
+            $('#grid_view').hide();
+            $('#list_view').show();
+        });
+
+$('#grid_btn').click(function() {
+$('#list_view').hide();
+$('#grid_view').show();
+});
+</script>
+
+<script>
+(function() {
+$('#search-box').keyup(function() {
+var value = $(this).val();
+var exp = new RegExp(value, 'i');
+$('.user-directory-list').each(function() {
+console.log("select : ", $('#search-by').val())
+if ($('#search-by').val() === "designation") {
+var isMatch = exp.test($('.user-designation', this).text());
+$(this).toggle(isMatch);
+} else {
+var isMatch = exp.test($('.user-name', this).text());
+$(this).toggle(isMatch);
+}
+
+});
+});
+})();
+</script>
+
+<script>
+(function() {
+$('#alphabet-list').on('click', 'button', function(evt) {
+evt.preventDefault();
+
+// Grab the letter that was clicked
+var sCurrentLetter = $(this).text();
+/*.toLowerCase()*/
+console.log('letter clicked', sCurrentLetter, '      ', $(this).text());
+
+if ($('#list_view').is(':visible')) {
+
+$('td.user-name').parent().show();
+if (sCurrentLetter == 'All') {
+$('#grid_view').hide();
+} else
+$('td.user-name:not( [data-name-attr^="' + sCurrentLetter + '"] )').parent().hide();
+} else {
+// Now hide all rows that have IDs that do not start with this letter
+$('.user-name').parent().parent().parent().show();
+//$('#grid_view').show();
+if (sCurrentLetter == 'All') {
+$('#list_view').hide();
+} else
+$('.user-name:not( [data-name-attr^="' + sCurrentLetter + '"] )').parent().parent().parent().hide();
+}
+
+});
+})();
+</script>

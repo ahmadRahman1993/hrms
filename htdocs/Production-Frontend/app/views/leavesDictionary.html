@@ -1,0 +1,234 @@
+<div class="right_col" role="main" style="min-height: 200px;" ng-init="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Leave Dictiontary</h3>
+        </div>
+    </div>
+    <div class="title_right">
+        <!-- Button trigger modal -->
+        <button class="btn btn-primary btn-small" data-toggle="modal" data-target="#myModalHorizontal">Create Leave
+            Type
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">New Leave Type</h4>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+
+                        <form class="form-horizontal" ng-submit="AddLeave()" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="leave.name" class="form-control"
+                                           placeholder="Leave Name"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Yearly Leaves</label>
+                                <div class="col-sm-10">
+                                    <input type="number" ng-model="leave.yearly_leaves" class="form-control"
+                                           placeholder="Yearly Leaves"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Leave Status</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="leave.status" class="form-control"
+                                           placeholder="Leave Status"/>
+                                </div>
+                            </div>
+                            <div class="form-group modal-footer">
+                                <div>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped" id="list_view" ng-init="GetLeaves()">
+            <thead>
+            <tr>
+                <!--<th style="width: 1%">#</th>-->
+                <th style="width: 20%">Name</th>
+                <th>Yearly Leaves</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Delete User</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="user-directory-list" ng-repeat="emp in Leaves">
+                <!--<td>1</td>-->
+                <td data-name-attr="{{emp.name}}" class="user-name">
+                    {{emp.name}}
+                    <br>
+                </td>
+                <td class="user-designation">
+                    {{emp.yearly_leaves}}
+                </td>
+                <td>
+                    {{emp.status}}
+                </td>
+                <td>
+                    <a ng-click="openModalUpdate(emp.name,emp.status,emp.yearly_leaves)" class="btn btn-primary btn-xs">
+                        <i class="fa fa-user"> </i> Update
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="openModal(emp.name)">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <!-- Modal  myModalHorizontalUpdate -->
+        <div class="modal fade" id="myModalHorizontalUpdate" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabelUpdate" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header myModalHorizontalUpdate -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabelUpdate">Update Leave</h4>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+
+                        <form class="form-horizontal" ng-submit="UpdateLeave()" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="upLname" class="form-control"
+                                           placeholder="Leave Name"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Yearly Leaves</label>
+                                <div class="col-sm-10">
+                                    <input type="number" ng-model="uptleaves" class="form-control"
+                                           placeholder="Yearly Leaves"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Leave Status</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="uplstatus" class="form-control"
+                                           placeholder="Leave Status"/>
+                                </div>
+                            </div>
+                            <div class="form-group modal-footer">
+                                <div>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="userDelModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4 class="modal-title">Are you sure, you want to delete the User ?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <!--<button type="button" class="btn btn-default" data-dismiss="modal">No</button>-->
+                        <a ng-click="deleteLeave()" class="btn btn-primary">Yes</a>
+                        <a class="btn btn-default" data-dismiss="modal">No</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#list_btn').click(function () {
+                $('#grid_view').hide();
+                $('#list_view').show();
+            });
+
+            $('#grid_btn').click(function () {
+                $('#list_view').hide();
+                $('#grid_view').show();
+            });
+        </script>
+
+        <script>
+            (function () {
+                $('#search-box').keyup(function () {
+                    var value = $(this).val();
+                    var exp = new RegExp(value, 'i');
+                    $('.user-directory-list').each(function () {
+                        console.log("select : ", $('#search-by').val())
+                        if ($('#search-by').val() === "designation") {
+                            var isMatch = exp.test($('.user-designation', this).text());
+                            $(this).toggle(isMatch);
+                        } else {
+                            var isMatch = exp.test($('.user-name', this).text());
+                            $(this).toggle(isMatch);
+                        }
+
+                    });
+                });
+            })();
+        </script>
+
+        <script>
+            (function () {
+                $('#alphabet-list').on('click', 'button', function (evt) {
+                    evt.preventDefault();
+
+// Grab the letter that was clicked
+                    var sCurrentLetter = $(this).text();
+                    /*.toLowerCase()*/
+                    console.log('letter clicked', sCurrentLetter, '      ', $(this).text());
+
+                    if ($('#list_view').is(':visible')) {
+
+                        $('td.user-name').parent().show();
+                        if (sCurrentLetter == 'All') {
+                            $('#grid_view').hide();
+                        } else
+                            $('td.user-name:not( [data-name-attr^="' + sCurrentLetter + '"] )').parent().hide();
+                    } else {
+// Now hide all rows that have IDs that do not start with this letter
+                        $('.user-name').parent().parent().parent().show();
+//$('#grid_view').show();
+                        if (sCurrentLetter == 'All') {
+                            $('#list_view').hide();
+                        } else
+                            $('.user-name:not( [data-name-attr^="' + sCurrentLetter + '"] )').parent().parent().parent().hide();
+                    }
+
+                });
+            })();
+        </script>

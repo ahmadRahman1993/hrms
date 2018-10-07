@@ -1,0 +1,57 @@
+<div class="" xmlns="http://www.w3.org/1999/html">
+     <div class="row">
+         <div class="container" style="padding-top: 60px;">
+             <h1 class="page-header">Company Profile</h1>
+             <div class="row">
+                 <div class="col-md-12 col-sm-4 col-xs-12 animated fadeInDown">
+                     <div class="well profile_view">
+
+                         <% if(success){ %>
+                         <div class="alert alert-success" role="alert">
+                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                             <span class="sr-only">Error:</span>
+                             Company Info Updated Successfully
+                         </div>
+                         <% } %>
+
+                         <div class="col-sm-12 margin-bottom-40">
+                             <div class=" left col-md-6 col-sm-6 col-xs-12">
+                                 <div class="text-center admin-profile">
+                                     <img src="/images/company/<%= comp_data.logo %>" class="company-square-image " alt="avatar">
+                                 </div>
+                                 </br>
+                                 <div class="text-center admin-profile">
+                                    <a href="/company/companyProfile" class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+                                 </div>
+                             </div>
+                             <div class="right col-xs-6">
+                                <h4 class="brief"><i>Company Information</i></h4></br>
+                                 <ul class="list-unstyled">
+                                     <li> Company Name : <%= comp_data.comp_name %></li>
+                                     <li> Web Url: <a href="https://www.google.com" target="_blank"><%= comp_data.web_url %></a> </li>
+                                     <li> Company Logo Url: <%= comp_data.logo %></li>
+                                 </ul>
+                                 </br>
+                                 <h4 class="brief"><i>Contact Information</i></h4></br>
+                                 <ul class="list-unstyled">
+                                     <li><i class="fa fa-phone"></i> Mobile #: <%= comp_data.contact_no %></li>
+                                     <li><i class="fa fa-envelope"></i> Email    : <%= comp_data.contact_email %></li>
+                                     <li><i class="fa fa-home"></i> Address  : <%= comp_data.address %></li>
+
+                                 </ul>
+                                 </br>
+                                     <h4 class="brief"><i>About Company</i></h4></br>
+                                 <ul class="list-unstyled">
+                                     <li>Companys brief description will come here</li>
+
+
+                                 </ul>
+                             </div>
+
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>

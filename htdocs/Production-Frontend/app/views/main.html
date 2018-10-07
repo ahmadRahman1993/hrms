@@ -1,0 +1,96 @@
+<div class="welcome-box" ng-controller="mainController">
+    <div class="welcome-container" ng-init="getdata()">
+        <div class="welcome-logo"><img src="static/images/good-rmorning-logo.png"></div>
+        <div class="welcome-text"> Good Afternoon, {{userBasicInfo.basic_information.first_name}} {{userBasicInfo.basic_information.last_name}}
+            <div class="welcome-date"> Tuesday, 10 Nov 3:52 PM</div>
+        </div>
+    </div>
+</div>
+<div class="menu-box-container">
+    <div class="full-width">
+        <div class="menu-search">
+            <input type="text" value="" placeholder="Search"></div>
+        <div class="menu-container-row">
+            <div class="menu-inner-container-row">
+                <div ng-if="menu.menuid <=3" ng-repeat="menu in menus"  class="row-menu-one">
+                    <div class="menu-button">
+                    <div id="menu-btn-{{menu.menuid}}"  ng-click="changeClass($event)">
+                        <a ng-href="{{menu.url == '' ? '' : menu.url}}">
+                            <img ng-src="{{menu.image}}" style="height: 70px;
+    width: 80px;">
+                            <div class="menu-button-text ">
+                                {{menu.title}}
+                            </div>
+                        </a>
+
+                    </div>
+                    </div>
+                    <div id="mobile-menu-btn-{{menu.menuid}}"
+                         href="javascript:;" class="mobile-submenu" style="display:none">
+                        <a href="javascript:;" class="mobile-submenu-button" ng-repeat="menus in menu.subMenus" >
+                            {{menus.title}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="full-width-black" id="full-black-width-row-one" style="display:none">
+            <div class="menu-inner-container-row">
+                <div ng-repeat="smenu in menus" ng-if="smenu.menuid <= 3" id="menu-btn-{{smenu.menuid}}-sub-menu">
+                    <div class="menu-container-row sub-menu-level menu-button" ng-repeat="sub in smenu.subMenus">
+                        <a ng-href="{{sub.url}}">
+                            <img ng-src="{{sub.image}}" style="height: 70px;
+    width: 80px;">
+                            <div class="sub-menu-button-text">{{sub.title}}</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="full-width">
+        <div class="menu-container-row">
+            <div class="menu-inner-container-row">
+                <div ng-if="menu.menuid >3 && menu.menuid <7" ng-repeat="menu in menus" class="row-menu-two">
+                <div class="menu-button">
+                    <div id="menu-btn-{{menu.menuid}}" ng-click="($parent.globals.currentUser.globaldata.privArray.indexOf(menu.reqPriv)!= -1) ? changeClass($event):0">
+                        <a ng-href="{{menu.url == '' ? '' : menu.url}}">
+                            <img ng-src="{{menu.image}}" style="height: 70px;
+    width: 80px;">
+                            <div class="menu-button-text ">
+                                {{menu.title}}
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                    <div id="mobile-menu-btn-{{menu.menuid}}"
+                         href="javascript:;" class="mobile-submenu" style="display:none">
+                        <a href="javascript:;" class="mobile-submenu-button" ng-repeat="menus in menu.subMenus" >
+                            {{menus.title}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="full-width-black" id="full-black-width-row-two" style="display:none">
+            <div class="menu-inner-container-row">
+                <div ng-repeat="smenu in menus" ng-if="smenu.menuid >=4 && smenu.menuid <=6"
+                     id="menu-btn-{{smenu.menuid}}-sub-menu">
+                    <div class="menu-container-row sub-menu-level menu-button" ng-repeat="sub in smenu.subMenus">
+                        <a ng-href="{{sub.url}}">
+                            <img ng-src="{{sub.image}}" style="height: 70px;
+    width: 80px;">
+                            <div class="sub-menu-button-text">{{sub.title}}</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+</script>

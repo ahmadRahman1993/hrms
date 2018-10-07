@@ -1,0 +1,135 @@
+<div class="">
+    <div class="row">
+
+        <div class="container" style="padding-top: 50px;">
+            <h1 class="page-header">Add User</h1>
+            <div class="row">
+                <!-- left column -->
+                <!--<div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="text-center admin-profile">
+                        <img src="/images/users/user_default.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                        <h6>Upload a different photo...</h6>
+                        <input type="file" class="text-center center-block well well-sm">
+                    </div>
+                </div>-->
+                <!-- edit form column -->
+                <div class="col-md-7 col-sm-6 col-xs-12 personal-info">
+
+                    <h3>Personal info</h3>
+                    <% if(success){ %>
+                    <div class="alert alert-success" role="alert">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        User Record Added Successfully
+                    </div>
+                    <% } %>
+                    <form class="form-horizontal" role="form" method="post" action="/users/addUser">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">First name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" required="true" name="first_name" value="" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Last name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" required="true" name="last_name" value="" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Login ID:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" required="true" name="login_id" value="" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Password:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" required="true" name="password" value="" type="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Confirm password:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" required="true" value="" type="password">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Address:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" name="address" value="" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Email:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" required="true" name="email" value="" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Contact No:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" name="contact_no" value="" type="text">
+                            </div>
+                        </div>
+
+                        <input class="form-control" type="hidden" name="image" value="user_default.png" type="text">
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Gender:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" required="true" name="gender" value="" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Designation:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" required="true" name="designation" value="" type="text">
+                            </div>
+                        </div>
+
+                        <input class="form-control" name="is_active" value="1" type="hidden">
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Company ID:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" name="comp_id" value="" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Role ID:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" name="role_id" value="" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Manager :</label>
+                            <div class="col-md-8">
+                                <select id="manager" class="select2_single form-control" placeholder="Select a state" tabindex="-1">
+                                    <% for(var i=0; i < userList.length; i++) { %>
+                                    <option value="<%=userList[i].login_id%>"><%=userList[i].first_name%> <%=userList[i].last_name%></option>
+                                    <%}%>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-8">
+                                <input class="btn btn-primary" value="Add User" type="submit">
+                                <span></span>
+                                <input class="btn btn-default" value="Reset" type="reset">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

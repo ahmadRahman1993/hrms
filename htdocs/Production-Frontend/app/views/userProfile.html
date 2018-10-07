@@ -1,0 +1,106 @@
+<div class="container" style="padding-top: 0px;" ng-init="getdata()">
+    <h1 class="page-header">Employee Profile</h1>
+    <div class="row">
+        <div class="col-md-12 col-sm-4 col-xs-12 animated fadeInDown">
+            <div class="well profile_view">
+
+                <div class="col-sm-12 margin-top-50">
+                    <div class=" left col-md-5 col-sm-6 col-xs-12">
+                        <div class="text-center admin-profile">
+                            <img src="static/images/avatar.png" class="avatar circle-dimension img-circle img-thumbnail"
+                                 alt="avatar">
+                        </div>
+                        <br>
+
+                        <div class="text-center admin-profile">
+                            <a href="#!/editprofile" class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit
+                                Profile</a>
+                        </div>
+
+
+                        <br>
+                        <br>
+                        <div class="text-center admin-profile">
+                            <a href="#!/documents" class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Documents</a>
+                        </div>
+
+                    </div>
+
+                    <div class="right col-xs-7">
+                        <h4 class="brief"><b>Personal Information</b></h4>
+
+                        <ul class="list-unstyled">
+                            <li><strong>First Name : </strong>{{userBasicInfo.basic_information.first_name}}</li>
+                            <li><strong>Last Name: </strong>{{userBasicInfo.basic_information.last_name}}</li>
+                            <li><strong>Gender: </strong>{{userBasicInfo.basic_information.gender}}</li>
+                        </ul>
+                        <br>
+                        <h4 class="brief"><b>Contact Information</b></h4>
+
+                        <ul class="list-unstyled">
+                            <div ng-repeat=" con in userBasicInfo.basic_information.contacts" >
+                            <li><i class="fa fa-phone"></i> <strong>{{con.type}}
+                                #: </strong>{{con.value}}
+                            </li>
+                                </div>
+                            <!--<li><i class="fa fa-phone-square"></i> <strong>Emergency Contact-->
+                                <!--#: </strong>987654321-->
+                            <!--</li>-->
+                            <!--<li><i class="fa fa-envelope"></i> <strong>Email : </strong><a href="javascript:void(0)">mannis@bluezorro.com</a>-->
+                            <!--</li>-->
+                            <!--<li><i class="fa fa-envelope-square"></i> <strong>Alternate-->
+                                <!--Email: </strong>sec_email@yahoo.com-->
+                            <!--</li>-->
+                            <!--<li><i class="fa fa-home"></i> <strong>Address-->
+                                <!--: </strong>house abc, street xyz, model colony malir-->
+                            <!--</li>-->
+
+                        </ul>
+                        <br>
+                        <h4 class="brief"><b>Company Information</b></h4>
+
+                        <ul class="list-unstyled">
+                            <li><i></i><strong>Manager: </strong>
+
+
+                                <a type="text" href="javascript:void(0)">{{userBasicInfo.basic_information.manager}}</a>
+
+
+                                <!--<a type="text" href="/users/viewUserProfile/sahmed">
+                                             View Profile
+                                         </a>-->
+
+                            </li>
+                            <li><i></i><strong>Designation: </strong>{{userBasicInfo.basic_information.designation}}</li>
+
+                            <!--<li><i></i> <strong>Company: </strong>Blue Zorro</li>-->
+                            <!--<li><i></i> <strong>Joining-->
+                                <!--Date: </strong>Tue Aug 23 2016-->
+                            <!--</li>-->
+
+
+                        </ul>
+                        <br>
+
+                        <h4 class="brief"><b>Account Information</b></h4>
+
+                        <ul class="list-unstyled">
+
+                            <li><i></i><strong>Login ID: </strong>{{userBasicInfo.basic_information.login_id}}</li>
+
+
+                            <li><i></i> <strong>Role: </strong>User</li>
+
+
+                            <li><i></i> <strong>Account Status: </strong>Active</li>
+
+
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

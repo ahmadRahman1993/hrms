@@ -1,0 +1,174 @@
+<div class="">
+     <div class="row">
+
+         <div class="container" style="padding-top: 60px;">
+             <h1 class="page-header">My Profile</h1>
+             <div class="row">
+                 <!-- left column -->
+
+                 <form class="form-horizontal col-md-5 col-sm-6 col-xs-12" role="form" method="post" action="/users/uploadImage/<%=otherUserData.login_id%>" enctype="multipart/form-data">
+                     <div class="col-md-12 col-sm-12 col-xs-12">
+                         <div class="text-center admin-profile">
+                             <img src="/images/users/<%= otherUserData.image %>" class="avatar circle-dimension img-circle img-thumbnail" alt="avatar">
+                             <h6 class="margin-top-50">Upload a different photo...</h6>
+                             <input type="file" required="true" name="image" class="text-center center-block well well-sm inline-block">
+                             <input class="btn btn-primary" value="Upload" type="submit">
+                         </div>
+                     </div>
+                 </form>
+
+                 <div class="col-md-7 col-sm-6 col-xs-12 personal-info">
+
+
+
+                     <% if(success){ %>
+                     <div class="alert alert-success" role="alert">
+                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                         <span class="sr-only">Error:</span>
+                         User Profile Updated Successfully
+                     </div>
+                     <% } %>
+
+                     <form class="form-horizontal" role="form" method="post" action="/users/updateProfile/<%= otherUserData.id %>">
+                         <h3>Personal Information</h3>
+                         <div class="form-group">
+                             <label class="col-lg-3 control-label">First name<span class="required">*</span></label>
+                             <div class="col-lg-8">
+                                 <input class="form-control" name="first_name" required="required" value="<%= otherUserData.first_name %>" type="text">
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="col-lg-3 control-label">Last name<span class="required">*</span></label>
+                             <div class="col-lg-8">
+                                 <input class="form-control" name="last_name" required="required" value="<%= otherUserData.last_name %>" type="text">
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="col-lg-3 control-label">Login ID<span class="required">*</span></label>
+                             <div class="col-lg-8">
+                                 <input class="form-control" name="login_id" required="required" value="<%= otherUserData.login_id %>" type="text" readonly>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="col-md-3 control-label">Gender<span class="required">*</span></label>
+                             <div class="col-md-8">
+                                 <input class="form-control" name="gender" required="required" value="<%= otherUserData.gender %>" type="text">
+                             </div>
+                         </div>
+                         <!--<div class="form-group">
+                             <label class="col-md-3 control-label">Password:</label>
+                             <div class="col-md-8">
+                                 <input class="form-control" name="password" value="" type="password">
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="col-md-3 control-label">Confirm password:</label>
+                             <div class="col-md-8">
+                                 <input class="form-control" value="" type="password">
+                             </div>
+                         </div>-->
+                         <h3>Contact Information</h3>
+                         <div class="form-group">
+                             <label class="col-lg-3 control-label">Address</label>
+                             <div class="col-lg-8">
+                                 <input class="form-control" name="address" value="<%= otherUserData.address %>" type="text">
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             <label class="col-md-3 control-label">Email<span class="required">*</span></label>
+                             <div class="col-md-8">
+                                 <input class="form-control" name="email" required="required" value="<%= otherUserData.email %>" type="text">
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="col-md-3 control-label">Alternate Email<span class="required">*</span></label>
+                             <div class="col-md-8">
+                                 <input class="form-control" name="e_email" required="required" value="<%= otherUserData.e_email %>" type="text">
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="col-md-3 control-label">Contact No</label>
+                             <div class="col-md-8">
+                                 <input class="form-control" name="contact_no" value="<%= otherUserData.contact_no %>" type="text">
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="col-md-3 control-label">Emergency Contact No</label>
+                             <div class="col-md-8">
+                                 <input class="form-control" name="e_contact_no" value="<%= otherUserData.e_contact_no %>" type="text">
+                             </div>
+                         </div>
+
+                         <h3>Company Information</h3>
+                         <div class="form-group">
+                             <label class="col-md-3 control-label">Designation<span class="required">*</span></label>
+                             <div class="col-md-8">
+                                 <input class="form-control" name="designation" required="required" value="<%= otherUserData.designation %>" type="text" <%if (otherUserData.role_id == 2){%>readonly<%}%>>
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             <label class="col-md-3 control-label">Status<span class="required">*</span></label>
+                             <div class="col-md-8">
+                                 <select name="is_active" id="is_active" class="select2_single form-control" <%if (otherUserData.role_id == 2){%>readonly<%}%>>
+                                     <option value=0 <% if (otherUserData.is_active == 0) { %>
+                                             selected="selected"
+                                             <% }%>>In-Active</option>
+                                     <option value=1  <% if (otherUserData.is_active == 1) { %>
+                                             selected="selected"
+                                             <% }%>>Active</option>
+                                 </select>
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             <label class="col-md-3 control-label">Company<span class="required">*</span></label>
+                             <div class="col-md-8">
+                                 <input class="form-control" name="comp_id" required="required" value="<%= otherUserData.company.comp_name %>" type="text" <%if (otherUserData.role_id == 2){%>readonly<%}%>>
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             <label class="col-md-3 control-label">Role ID<span class="required">*</span></label>
+                             <div class="col-md-8">
+                                 <select name="role_id" id="role_id" class="select2_single form-control" <%if (otherUserData.role_id == 2){%>readonly<%}%>>
+                                     <option value="">Select a Role</option>
+                                     <option value="1"<%if (otherUserData.role_id == 1){%>selected="selected"<%}%>> Admin</option>
+                                     <option value="2"<%if (otherUserData.role_id == 2){%>selected="selected"<%}%>> User</option>
+                                     <option value="3"<%if (otherUserData.role_id == 3){%>selected="selected"<%}%>> Super Admin</option>
+                                 </select>
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             <label class="col-md-3 control-label">Manager :</label>
+                             <div class="col-md-8">
+                                 <select name="manager" id="manager" class="select2_single form-control">
+                                     <option value="">Select a Manager</option>
+                                     <% for(var i=0; i < userList.length; i++) { %>
+                                     <option value="<%=userList[i].login_id%>"
+                                     <%if (otherUserData.manager == userList[i].login_id){%>selected="selected"<%}%>
+                                     ><%=userList[i].first_name%> <%=userList[i].last_name%></option>
+                                     <%}%>
+                                 </select>
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             <label class="col-md-3 control-label"></label>
+                             <div class="col-md-8">
+                                 <input class="btn btn-primary" value="Update" type="submit">
+                                 <span></span>
+                                 <!--          <a class="btn btn-default" href="/users/viewUserProfile"> Cancel </a>-->
+                                 <input class="btn btn-default" value="Reset" type="reset">
+                             </div>
+                         </div>
+                     </form>
+                 </div>
+
+             </div>
+         </div>
+
+     </div>
+ </div>

@@ -1,0 +1,293 @@
+<div class="page-title">
+    <div class="title_left">
+        <h3>Employee Directory</h3>
+    </div>
+
+    <div>
+        <div class="btn-group pull-right">
+            <a id="list_btn" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-th-list"></span> List
+            </a>
+            <a id="grid_btn" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-th"></span> Grid
+            </a>
+        </div>
+    </div>
+
+    <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            <!--<div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                </span>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+
+            <div class="x_content">
+
+
+                <div class="container">
+                    <div class="btn-toolbar">
+                        <div id="alphabet-list" class="btn-group btn-group-sm">
+                            <button class="btn btn-default">All</button>
+                            <button class="btn btn-default">A</button>
+                            <button class="btn btn-default">B</button>
+                            <button class="btn btn-default">C</button>
+                            <button class="btn btn-default">D</button>
+                            <button class="btn btn-default">E</button>
+                            <button class="btn btn-default">F</button>
+                            <button class="btn btn-default">G</button>
+                            <button class="btn btn-default">H</button>
+                            <button class="btn btn-default">I</button>
+                            <button class="btn btn-default">J</button>
+                            <button class="btn btn-default">K</button>
+                            <button class="btn btn-default">L</button>
+                            <button class="btn btn-default">M</button>
+                            <button class="btn btn-default">N</button>
+                            <button class="btn btn-default">O</button>
+                            <button class="btn btn-default">P</button>
+                            <button class="btn btn-default">Q</button>
+                            <button class="btn btn-default">R</button>
+                            <button class="btn btn-default">S</button>
+                            <button class="btn btn-default">T</button>
+                            <button class="btn btn-default">U</button>
+                            <button class="btn btn-default">V</button>
+                            <button class="btn btn-default">W</button>
+                            <button class="btn btn-default">X</button>
+                            <button class="btn btn-default">Y</button>
+                            <button class="btn btn-default">Z</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="title_right">
+
+                    <div class="col-md-4 col-sm-4 form-group pull-right top_search">
+
+                        <div class="input-group pull-right">
+
+                            <input id="search-box" type="text" class="form-control profile-search"
+                                   placeholder="Search for...">
+                            <span class="input-group-btn width-auto">
+                            <!--<button class="btn btn-default" type="button">Go!</button>-->
+                            <select name="search-by" id="search-by" class="select2_single form-control">
+                                 <option value="name">By Name</option>
+                                 <option value="designation">By Designation</option>
+                            </select>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="grid_view">
+                <div class="clearfix"></div>
+                <% for(var i = 0; i < userList.length; i++) { %>
+                <div class="col-md-4 col-sm-4 col-xs-12 animated fadeInDown user-directory-list">
+                    <div class="well profile_view">
+                        <div class="col-sm-12 employee-dir-box">
+                            <h2 data-name-attr="<%= userList[i].first_name %>  <%= userList[i].last_name %>"
+                                class="user-name"><%= userList[i].first_name %>  <%= userList[i].last_name %>
+                            </h2>
+                            <div class="left col-xs-7">
+                                <h2 class="brief user-designation"><i><%= userList[i].designation %></i></h2>
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-legal"></i> Reporting to :<br>
+                                        <% if (userList[i].manager != ""){
+                                        for (var j = 0; j < userList.length; j++){
+                                        if (userList[i].manager == userList[j].login_id){ %>
+                                        <%= userList[j].first_name %> <%= userList[j].last_name %>
+                                        <%
+                                        }
+                                        }
+                                        }else { %>
+                                        None
+                                        <%
+                                        } %>
+                                    </li>
+                                    <li><i class="fa fa-phone"></i> Contact #:<br> <%= userList[i].contact_no %>
+                                    </li>
+                                    <li><i class="fa fa-envelope"></i> Email :<br> <a
+                                                href="mailto:<%= userList[i].email %>"><%= userList[i].email %></a>
+                                    </li>
+                                    <!--
+                                        <li><i class="fa fa-home"></i> Address  : <%= userList[i].address %></li>
+-->
+
+                                </ul>
+                            </div>
+                            <div class="right col-xs-5 text-center">
+                                <img src="/images/users/<%= userList[i].image %>" alt=""
+                                     class="img-circle img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 bottom text-right">
+                            <div class="col-xs-12 col-sm-6 emphasis">
+
+                            </div>
+                            <div class="col-xs-12 col-sm-6 emphasis">
+
+
+                                <!-- <a href="/company/addNewCompanyView">
+                                    <i class="fa fa-plus"></i>  Add Company
+                                </a>-->
+                                <a type="button" href="/users/viewUserProfile/<%= userList[i].login_id %>"
+                                   class="btn btn-primary btn-xs">
+                                    <i class="fa fa-user"> </i> View Profile
+                                </a>
+                                <!-- <button type="button" class="btn btn-primary btn-xs" onclick="window.location='/users/viewUserProfile';"> <i class="fa fa-user">
+                                     </i> View Profile </button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+
+
+            <table class="table table-striped" id="list_view" style="display:none">
+                <thead>
+                <tr>
+                    <th style="width: 1%">#</th>
+                    <th style="width: 20%">Name</th>
+                    <th>Image</th>
+                    <th>Designation</th>
+                    <th>Reporting to</th>
+                    <th>Contact #</th>
+                    <th>Email</th>
+                    <th>View</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <% for(var i = 0; i < userList.length; i++) { %>
+
+                <tr class="user-directory-list">
+                    <td><%= i + 1 %></td>
+                    <td data-name-attr="<%= userList[i].first_name %>  <%= userList[i].last_name %>" class="user-name">
+                        <%= userList[i].first_name %>  <%= userList[i].last_name %>
+                        <br/>
+                    </td>
+                    <td>
+                        <ul class="list-inline">
+                            <li>
+                                <img src="/images/users/<%= userList[i].image %>" class="avatar" alt="Avatar">
+                            </li>
+                        </ul>
+                    </td>
+
+                    <td class="user-designation">
+                        <%= userList[i].designation %>
+                    </td>
+
+                    <td>
+                        <% if (userList[i].manager != ""){
+                        for (var j = 0; j < userList.length; j++){
+                        if (userList[i].manager == userList[j].login_id){ %>
+                        <%= userList[j].first_name %> <%= userList[j].last_name %>
+                        <%
+                        }
+                        }
+                        }else { %>
+                        None
+                        <%
+                        } %>
+                    </td>
+                    <td>
+                        <%= userList[i].contact_no %>
+                    </td>
+
+                    <td>
+                        <a href="mailto:<%= userList[i].email %>"><%= userList[i].email %></a>
+                    </td>
+
+                    <td>
+                        <a href="/users/viewUserProfile/<%= userList[i].login_id %>" class="btn btn-primary btn-xs">
+                            <i class="fa fa-user"> </i> View Profile
+                        </a>
+                    </td>
+                </tr>
+
+                <% } %>
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#list_btn').click(function () {
+        $('#grid_view').hide();
+        $('#list_view').show();
+    });
+
+    $('#grid_btn').click(function () {
+        $('#list_view').hide();
+        $('#grid_view').show();
+    });
+</script>
+
+<script>
+    (function () {
+        $('#search-box').keyup(function () {
+            var value = $(this).val();
+            var exp = new RegExp(value, 'i');
+            $('.user-directory-list').each(function () {
+                console.log("select : ", $('#search-by').val())
+                if ($('#search-by').val() === "designation") {
+                    var isMatch = exp.test($('.user-designation', this).text());
+                    $(this).toggle(isMatch);
+                } else {
+                    var isMatch = exp.test($('.user-name', this).text());
+                    $(this).toggle(isMatch);
+                }
+
+            });
+        });
+    })();
+</script>
+
+<script>
+    $('#alphabet-list').on('click', 'button', function (evt) {
+        evt.preventDefault();
+
+        // Grab the letter that was clicked
+        var sCurrentLetter = $(this).text();
+        /*.toLowerCase()*/
+        console.log('letter clicked', sCurrentLetter, '      ', $(this).text());
+
+        if($('#list_view').is(':visible')) {
+
+            $('td.user-name').parent().show();
+            if (sCurrentLetter == 'All') {
+                $('#grid_view').hide();
+            }
+            else
+                $('td.user-name:not( [data-name-attr^="' + sCurrentLetter + '"] )').parent().hide();
+        }
+        else {
+            // Now hide all rows that have IDs that do not start with this letter
+            $('.user-name').parent().parent().parent().show();
+            //$('#grid_view').show();
+            if (sCurrentLetter == 'All') {
+                $('#list_view').hide();
+            }
+            else
+                $('.user-name:not( [data-name-attr^="' + sCurrentLetter + '"] )').parent().parent().parent().hide();
+        }
+
+    });
+</script>
+
+</div>
+

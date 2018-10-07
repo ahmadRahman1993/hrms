@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+<hr>
+
+<table border="1" width="100%" align="center">
+    <tr>
+        <th>ID</th>
+        <th>userId</th>
+        <th>verifyMode</th>
+        <th>inOutMode</th>
+        <th>date_time</th>
+        <th>workcode</th>
+    </tr>
+
+    <% for(var i=0; i < timeRec.length; i++) { %>
+    <tr>
+        <td><%= timeRec[i].id %></td>
+        <td><%= timeRec[i].userId %></td>
+        <td><%= timeRec[i].verifyMode %></td>
+        <td><%= timeRec[i].inOutMode %></td>
+        <td><%= timeRec[i].date_time %>
+        <td><%= timeRec[i].workcode %></td>
+    </tr>
+    <% } %>
+</table>
+
+
+
+
+
+</body>
+</html>

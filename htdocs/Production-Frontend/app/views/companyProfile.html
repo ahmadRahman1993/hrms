@@ -1,0 +1,44 @@
+        <div ng-init="getCompInfo()" class="container" style="padding-top: 60px;">
+            <h1 class="page-header">Company Profile</h1>
+            <div class="row">
+                <div class="col-md-12 col-sm-4 col-xs-12 animated fadeInDown">
+                    <div class="well profile_view">
+
+                        <div class="col-sm-12 margin-bottom-40">
+                            <div class=" left col-md-6 col-sm-6 col-xs-12">
+                                <div class="text-center admin-profile">
+                                    <img src="static/images/company.png" class="company-square-image " alt="avatar">
+                                </div>
+                                </br>
+                                <div class="text-center admin-profile">
+                                    <a href="#!/editCompInfo" class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+                                </div>
+                            </div>
+                            <div class="right col-xs-6">
+                                <h4 class="brief"><i>Company Information</i></h4></br>
+                                <ul class="list-unstyled">
+                                    <li> Company Name : {{compInfo.name}}</li>
+                                    <li> Web Url: <a href="http://www.netpace.com" target="_blank"> http://www.netpace.com</a> </li>
+                                </ul>
+                                </br>
+                                <h4 class="brief"><i>Contact Information</i></h4></br>
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-phone"></i> Mobile #: {{compInfo.contact_office}}</li>
+                                    <li><i class="fa fa-envelope"></i> Email    : {{compInfo.email}}</li>
+                                    <li><i class="fa fa-home"></i> Address  : {{compInfo.address}}</li>
+
+                                </ul>
+                                </br>
+                                <h4 class="brief"><i>About Company</i></h4></br>
+                                <ul class="list-unstyled">
+                                    <li>Companys brief description will go here</li>
+
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

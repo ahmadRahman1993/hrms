@@ -1,0 +1,23 @@
+<div class="row" ng-init="getUsers()">
+    <div class="col-xs-12 col-sm-6">
+        <h3>Assign Roles to User</h3>
+
+        <select class="form-control" ng-model="user.user_id" ng-change="getUserRoles()">
+            <option  ng-repeat="user in userslist" value="{{user.id}}">{{user.first_name}} {{user.last_name}}</option>
+        </select>
+
+        <div class="well">
+            <label ng-repeat="role in rolesList" style="display: block">
+            <input type="checkbox" checklist-model="user.role_ids" checklist-value="role.id"> {{role.name}}
+        </label>
+        </div>
+        <button ng-click="checkAllRoles()" style="margin-right: 10px">Check all</button>
+        <button ng-click="uncheckAllRoles()" style="margin-right: 10px">Uncheck all</button>
+
+        <button ng-click="setUserRoles()">Done</button>
+    </div>
+    <!--<div class="col-xs-12 col-sm-6">
+        <h3>user.roles</h3>
+        <pre>{{role.roles|json}}</pre>
+    </div>-->
+</div>

@@ -1,0 +1,90 @@
+<div class="container" style="padding-top: 0px;" ng-init="empProfileDir()">
+    <h1 class="page-header">Employee Profile</h1>
+    <div class="row">
+        <div class="col-md-12 col-sm-4 col-xs-12 animated fadeInDown">
+            <div class="well profile_view">
+
+                <div class="col-sm-12 margin-top-50">
+                    <div class=" left col-md-5 col-sm-6 col-xs-12">
+                        <div class="text-center admin-profile">
+                            <img src="static/images/avatar.png" class="avatar circle-dimension img-circle img-thumbnail"
+                                 alt="avatar">
+                        </div>
+                        <br>
+                        <div class="text-center admin-profile" ng-show="empDir.id == $parent.globals.currentUser.data.id
+                                || $parent.globals.currentUser.globaldata.privArray.indexOf('EDIT_EMP_PROFILE')!=-1 ">
+                            <a href="#!/editprofile" class="btn btn-success">
+                                <i class="fa fa-edit m-right-xs"></i>
+                                EditProfile
+                            </a>
+                        </div>
+
+
+                        <br>
+                        <br>
+                        <!--<div class="text-center admin-profile">-->
+                            <!--<a href="#!/documents" class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Documents</a>-->
+                        <!--</div>-->
+
+                    </div>
+
+                    <div class="right col-xs-7">
+                        <h4 class="brief"><b>Personal Information</b></h4>
+
+                        <ul class="list-unstyled">
+                            <li><strong>First Name : </strong>{{empDir.first_name}}</li>
+                            <li><strong>Last Name: </strong>{{empDir.last_name}}</li>
+                            <li><strong>Gender: </strong>{{empDir.gender}}</li>
+                        </ul>
+                        <br>
+                        <h4 class="brief"><b>Contact Information</b></h4>
+
+                        <!--<ul class="list-unstyled">-->
+                            <!--<div ng-repeat=" con in userBasicInfo.basic_information.contacts" >-->
+                                <!--<li><i class="fa fa-phone"></i> <strong>{{con.type}}-->
+                                    <!--#: </strong>{{con.value}}-->
+                                <!--</li>-->
+                    <!--</div>-->
+                                                    <!--</ul>-->
+                        <br>
+                        <h4 class="brief"><b>Company Information</b></h4>
+
+                        <ul class="list-unstyled">
+                            <li><i></i><strong>Manager: </strong>
+
+
+                                <a type="text" href="javascript:void(0)">{{empDir.manager}}</a>
+
+
+                                <!--<a type="text" href="/users/viewUserProfile/sahmed">
+                                             View Profile
+                                         </a>-->
+
+                            </li>
+                            <li><i></i><strong>Designation: </strong>{{empDir.designation}}</li>
+
+                                       </ul>
+                        <br>
+
+                        <h4 class="brief"><b>Account Information</b></h4>
+
+                        <ul class="list-unstyled">
+
+                            <li><i></i><strong>Login ID: </strong>{{empDir.login_id}}</li>
+
+
+                            <li><i></i> <strong>Role: </strong>User</li>
+
+
+                            <li><i></i> <strong>Account Status: </strong>Active</li>
+
+
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

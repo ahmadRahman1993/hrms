@@ -1,0 +1,8 @@
+{
+  "side_menu": [
+    "Home","Companies","Users","Events"
+  ],
+  "summary_tabs": [
+    "Total Users","Attendance","Department", "Pending Requests", "Teams"
+  ]
+}

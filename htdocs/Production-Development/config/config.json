@@ -1,0 +1,9 @@
+{
+  "db_name":"hrms",
+  "username":"root",
+  "password":"root",
+  "host":"localhost",
+  "dialect":"mysql",
+  "port":"3306",
+  "secret_key":"netpace123"
+}
